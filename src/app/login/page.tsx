@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/types";
 import { useEffect } from "react";
 import { loginUser } from "@/state/login/loginSlice";
+import Loading from "@/components/Loading";
 
 const LoginSchema = yup.object().shape({
   name: yup
@@ -44,9 +45,11 @@ export default function LoginPage() {
     
     router.replace('/home');
   };
+
+  
   
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-700">
+    <div className="min-h-screen flex items-center justify-center bg-[#36393F]">
       <div className="max-w-md w-full space-y-6 px-8">
         <Formik
           initialValues={{
@@ -60,7 +63,7 @@ export default function LoginPage() {
         >
           {({ isSubmitting }) => (
             <Form>
-              <div>
+              <div className="mb-6">
                 <label
                   htmlFor="name"
                   className="block font-bold text-white mb-2"
@@ -70,12 +73,12 @@ export default function LoginPage() {
                 <Field
                   type="text"
                   name="name"
-                  className="w-full px-3 py-4 border bg-neutral-600 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300  text-white placeholder-gray-400"
+                  className="w-full px-3 py-4 border bg-[#40444B] border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-gray-200  text-white placeholder-gray-400"
                   placeholder="Enter your name"
                 />
                 <ErrorMessage name="name" component="div" className="text-red-400 text-sm mt-1"/>
               </div>
-              <button type="submit" disabled={isSubmitting} className="flex justify-center items-center gap-2 bg-green-400 text-white py-2 px-6 rounded-md">
+              <button type="submit" disabled={isSubmitting} className="flex justify-center items-center gap-2 bg-[#39C36D] text-white py-2 px-6 rounded-md">
                 Next
                 <FaArrowRight />
               </button>

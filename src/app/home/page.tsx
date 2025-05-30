@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/Loading";
 import TodoForm from "@/components/TodoForm";
 import TodoItem from "@/components/TodoItem";
 import { logoutUser } from "@/state/login/loginSlice";
@@ -78,11 +79,11 @@ export default function HomePage() {
   };
 
   if (!isLoggedIn || !userName) {
-    return <div>Loading...</div>;
+    return <Loading message="Loading your todos..." />;
   }
 
   return (
-    <div className="min-h-screen flex justify-center bg-neutral-700">
+    <div className="min-h-screen flex justify-center bg-[#36393F]">
       <div className="max-w-md w-full flex-1 px-8 py-10 space-y-6 relative">
         <div className="flex gap-5 items-center border-b border-neutral-600 pb-5">
           <button
@@ -124,7 +125,7 @@ export default function HomePage() {
         />
         <button
           onClick={() => setIsFormOpen(true)}
-          className="absolute bottom-8 right-8 bg-green-400 text-neutral-700 py-4 px-6 text-4xl rounded-full shadow-lg"
+          className="absolute bottom-8 right-8 bg-[#39C36D] text-neutral-700 py-4 px-6 text-4xl rounded-full shadow-lg"
         >
           +
         </button>
