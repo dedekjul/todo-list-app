@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/types";
 import { useEffect } from "react";
 import { loginUser } from "@/state/login/loginSlice";
-import Loading from "@/components/Loading";
 
 const LoginSchema = yup.object().shape({
   name: yup
@@ -45,8 +44,6 @@ export default function LoginPage() {
     
     router.replace('/home');
   };
-
-  
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#36393F]">

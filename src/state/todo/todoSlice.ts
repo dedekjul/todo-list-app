@@ -44,7 +44,7 @@ const todoSlice = createSlice({
     checkOverdueTodos: (state) => {
       const currentTime = new Date();
       state.todos.forEach((todo) => {
-        if (todo.status === "OPEN") { // Only check OPEN todos
+        if (todo.status === "OPEN") { 
           const dueDate = new Date(todo.dueDate);
           if (dueDate < currentTime) {
             todo.status = "OVERDUE";

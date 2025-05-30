@@ -7,7 +7,6 @@ import { logoutUser } from "@/state/login/loginSlice";
 import { addTodo, checkOverdueTodos, deleteTodo, markTodoDone } from "@/state/todo/todoSlice";
 import { useAppDispatch, useAppSelector } from "@/types";
 import { useRouter } from "next/navigation";
-import { title } from "process";
 import { useEffect, useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
@@ -33,8 +32,8 @@ export default function HomePage() {
 
       const interval = setInterval(() => {
         dispatch(checkOverdueTodos());
-      }, 60000); // Check every minute
-      return () => clearInterval(interval); // Cleanup on unmount
+      }, 60000); 
+      return () => clearInterval(interval); 
     }
   }, [isLoggedIn, userName, dispatch]);
 

@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user", "todos"], // Only persist user and todos slices
+  whitelist: ["user", "todos"], 
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
