@@ -31,14 +31,14 @@ export default function HomePage() {
         <TodoItem
           title="Submit Code to Taksu blabla awdawdn dajwbf  dajwbdibaef"
           dueDate="21 October 2021 07:30PM"
-          status="OPEN"
+          status="DONE"
           // onDelete={() => handleDelete('1')}
           // onMarkDone={() => handleMarkDone('1')}
         />
         <TodoItem
           title="Submit Code to Taksu blabla awdawdn dajwbf  dajwbdibaef"
           dueDate="21 October 2021 07:30PM"
-          status="OPEN"
+          status="OVERDUE"
           // onDelete={() => handleDelete('1')}
           // onMarkDone={() => handleMarkDone('1')}
         />
