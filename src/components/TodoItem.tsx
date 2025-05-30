@@ -6,8 +6,8 @@ interface TodoItemProps {
   title: string;
   dueDate: string;
   status: "OPEN" | "DONE" | "OVERDUE";
-  // onDelete: () => void;
-  // onMarkDone: () => void;
+  onDelete: () => void;
+  onMarkDone: () => void;
 }
 
 export default function TodoItem({
@@ -39,7 +39,7 @@ export default function TodoItem({
           {status}
         </div>
         <button
-          // onClick={onDelete}
+          onClick={onDelete}
           className="text-gray-400 bg-neutral-700 p-2 rounded-md"
         >
           <FaTrashAlt />
@@ -52,12 +52,14 @@ export default function TodoItem({
           <p className="text-sm text-gray-300 mt-2">Due date:</p>
           <p className="text-sm text-gray-300">{dueDate}</p>
         </div>
-        <button
-          // onClick={onMarkDone}
-          className="px-4 py-2 h-fit bg-purple-600 text-white text-sm font-semibold rounded-lg hover:bg-purple-700"
-        >
-          DONE
-        </button>
+        {status !== "DONE" && (
+          <button
+            onClick={onMarkDone}
+            className="px-4 py-2 h-fit bg-purple-600 text-white text-sm font-semibold rounded-lg hover:bg-purple-700"
+          >
+            DONE
+          </button>
+        )}
       </div>
       <div className="flex flex-col items-end justify-between h-full flex-shrink-0"></div>
     </div>

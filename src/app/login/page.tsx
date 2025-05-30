@@ -4,10 +4,9 @@ import { FaArrowRight } from "react-icons/fa";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useRouter } from "next/navigation";
-
-// interface LoginFormProps {
-//   onSubmit: (values: { name: string }) => void;
-// }
+import { useAppDispatch, useAppSelector } from "@/types";
+import { useEffect } from "react";
+import { loginUser } from "@/state/login/loginSlice";
 
 const LoginSchema = yup.object().shape({
   name: yup
@@ -18,11 +17,32 @@ const LoginSchema = yup.object().shape({
 
 export default function LoginPage() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const {isLoggedIn, name: currentUserName } = useAppSelector(state => state.user);
+  const { todos } = useAppSelector(state => state.todos);
+
+  useEffect(() => {
+    if (isLoggedIn && currentUserName) {
+      router.push('/home');
+    }
+  }, [isLoggedIn, currentUserName, router]);
 
   const handleSubmit = (values: { name: string }) => {
-    console.log("Login with name:", values.name);
-    // Redirect to home page
-    router.push('/home');
+    const { name } = values;
+    console.log("Login attempt with name:", name);
+    
+    const userTodos = todos.filter(todo => todo.userName === name);
+    
+    if (userTodos.length > 0) {
+      console.log(`Welcome back ${name}! Found ${userTodos.length} existing todos.`);
+    } else {
+      console.log(`Welcome ${name}! This appears to be a new user.`);
+    }
+    
+    dispatch(loginUser(name));
+    
+    router.replace('/home');
   };
   
   return (
